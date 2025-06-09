@@ -33,7 +33,7 @@ resource "coder_agent" "main" {
   os                     = "linux"
   startup_script         = <<-EOT
     set -e
-
+    export HOME=/tmp
     # install and start code-server
     curl -fsSL https://code-server.dev/install.sh | sh -s -- --method=standalone --prefix=/tmp/code-server
     /tmp/code-server/bin/code-server --auth none --port 13337 >/tmp/code-server.log 2>&1 &
